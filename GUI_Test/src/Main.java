@@ -14,6 +14,8 @@ public class Main extends Application {
 	Button button1, button2, button3;
 	Stage window;
 	Scene scene1, scene2;
+	VBox layout2 = new VBox();
+	VBox layout1 = new VBox();
 
 	public static void main(String[] args) {
 		launch(args);
@@ -27,8 +29,17 @@ public class Main extends Application {
 		window.setTitle("My first window");
 		button1 = new Button("Go to scene 2");
 		button3 = new Button("Go to scene 1");
-		button2 = new Button("Open Alert window");
-		button2.setOnAction(e->AlertBox.display("Alert", "Alert! You can now close the Window."));
+		button2 = new Button("Confirm the weather");
+		button2.setOnAction(e->{
+			boolean response = ConfirmBox.display("Confirm Box ", "Today is sunny.");
+			if(response == true) {
+				Label label2 = new Label("Today is sunny");
+				layout2.getChildren().add(label2);
+			}else {
+				Label label2 = new Label("Today is not sunny");
+				layout2.getChildren().add(label2);
+			}
+		});
 		button1.setOnAction(e->window.setScene(scene2));
 		button3.setOnAction(e->window.setScene(scene1));
 		/**for handling a button click the method is provided in "this"( the handle method)
@@ -55,8 +66,6 @@ public class Main extends Application {
 			}
 		});**/ 
 		
-		VBox layout2 = new VBox();
-		VBox layout1 = new VBox();
 		layout1.getChildren().addAll(label1, button1);
 		layout1.setAlignment(Pos.CENTER);
 		layout2.getChildren().addAll(button2, button3);
