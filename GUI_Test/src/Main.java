@@ -47,7 +47,7 @@ public class Main extends Application {
 		// with lambda expression
 		button.setOnAction(e-> {
 			System.out.println("Super");
-			System.out.println("ehhh");
+			System.out.println("aaa");
 		}); 
 		
 		StackPane layout = new StackPane();
